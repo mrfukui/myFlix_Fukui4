@@ -23,6 +23,7 @@ app.get('/', (req, res) => {
     res.send('Welcome to Fukuis Flixes');
 });
 
+
 //Add a user
 /* We’ll expect JSON in this format
 {
