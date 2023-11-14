@@ -31,7 +31,26 @@
           <td>GET</td>
           <td>None</td>
           <td>None</td>
-          <td>Returns an array of all movies</td>
+          <td>{
+            title: {type: String, required: true},
+            description: {type: String, required: true},
+            genre: {
+                Name: String,
+                Description: String
+            },
+            director: {
+                name: String,
+                bio: String,
+                birthyear: String,
+                deathyear: String
+            },
+            actors: [String],
+            imageurl: String,
+            featured: Boolean
+            }
+            <br>
+            Movies.find()
+        </td>
         </tr>
         <tr>
           <td>Return data (description, genre, director, image URL, whether it/'s featured or not) about a single movie by title to the user</td>
@@ -39,7 +58,26 @@
           <td>GET</td>
           <td>:title</td>
           <td>None</td>
-          <td>Returns a JSON object with data about a single movie</td>
+          <td>{
+            title: {type: String, required: true},
+            description: {type: String, required: true},
+            genre: {
+                Name: String,
+                Description: String
+            },
+            director: {
+                name: String,
+                bio: String,
+                birthyear: String,
+                deathyear: String
+            },
+            actors: [String],
+            imageurl: String,
+            featured: Boolean
+            }
+            <br>
+          Movies.findOne({ title: req.params.title })
+          </td>
         </tr>
         <tr>
           <td>Return data about a genre (description) by name/title (e.g., “Thriller”)</td>
@@ -47,7 +85,13 @@
           <td>GET</td>
           <td>:name</td>
           <td>None</td>
-          <td>Returns a JSON object with data about a single genre</td>
+          <td>{
+            Name: String,
+            Description: String
+          }
+          <br>
+          Movies.findOne({ 'genre.name': req.params.genrename })
+          </td>
         </tr>
         <tr>
           <td>Return data about a director (bio, birth year, death year) by name</td>
@@ -55,7 +99,15 @@
           <td>GET</td>
           <td>:name</td>
           <td>None</td>
-          <td>Returns a JSON object with data about a single director</td>
+          <td>director: {
+            name: String,
+            bio: String,
+            birthyear: String,
+            deathyear: String
+          }
+          <br>
+          Movies.findOne({ 'director.name': req.params.directorname })
+          </td>
         </tr>
         <tr>
           <td>Allow new users to register</td>
@@ -76,7 +128,9 @@
                 birthday: "1985-08-08",
                 id: '3jk3ljfk'
               }
-        </td>
+            <br>
+            Users.findOne({ Username: req.body.Username })
+          </td>
         </tr>
         <tr>
           <td>Allow users to update their user info (username)</td>
@@ -92,6 +146,8 @@
                 password: 'HeresJohnny',
                 id: '3jk3ljfk'
               }
+            <br>
+            Users.findOneAndUpdate({ Username: req.params.Username })
           </td>
         </tr>
         <tr>
@@ -100,7 +156,9 @@
           <td>POST</td>
           <td>:username, :title</td>
           <td>None</td>
-          <td>'${movieTitle} has been added to user ${username}s array'
+          <td>favoritemovies: ["ObjectId"]
+            <br>
+            Users.findOneAndUpdate({ username: req.params.username })
           </td>
         </tr>
         <tr>
@@ -109,7 +167,10 @@
           <td>DELETE</td>
           <td>:username, :title</td>
           <td>None</td>
-          <td>'${movieTitle} has been removed from user ${username}s array'</td>
+          <td>favoritemovies: ["ObjectId"]
+            <br>
+            Users.findOneAndUpdate({ username: req.params.username })
+          </td>
         </tr>
         <tr>
           <td>Allow existing users to deregister (showing only a text that a user email has been removed—more on this later)</td>
@@ -117,7 +178,10 @@
           <td>DELETE</td>
           <td>:username</td>
           <td>None</td>
-          <td>'${username} has been removed as a user'</td>
+          <td>'${username} has been removed as a user'
+            <br>
+            Users.findOneAndUpdate({ username: req.params.username })
+          </td>
         </tr>
       </tbody>
     </table>
