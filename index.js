@@ -32,7 +32,7 @@ let allowedOrigins = [
   "http://localhost:8080",
   "http://localhost:1234",
   "http://testsite.com",
-  "https://fukuis-flixes.netlify.app/",
+  "https://fukuis-flixes.netlify.app",
 ];
 
 app.use(
