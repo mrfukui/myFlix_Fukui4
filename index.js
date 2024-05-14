@@ -35,6 +35,9 @@ let allowedOrigins = [
   "http://testsite.com",
   "https://fukuis-flixes.netlify.app",
   "https://mrfukui.github.io",
+  "https://mrfukui.github.io/myFlix-Angular-client/welcome",
+  "https://mrfukui.github.io/myFlix-Angular-client/movies",
+  "https://mrfukui.github.io/myFlix-Angular-client/profile",
 ];
 
 app.use(
