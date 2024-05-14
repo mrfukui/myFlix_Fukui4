@@ -34,6 +34,7 @@ let allowedOrigins = [
   "http://localhost:4200",
   "http://testsite.com",
   "https://fukuis-flixes.netlify.app",
+  "https://mrfukui.github.io",
 ];
 
 app.use(
